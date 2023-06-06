@@ -1,10 +1,10 @@
 package chess;
 
-import chess.Board;
-import pieces.Pawn;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import pieces.Pawn;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BoardTest {
 
@@ -13,12 +13,12 @@ public class BoardTest {
     public void create() {
         Board board = new Board();
 
-        Pawn white = new Pawn(Pawn.WHITE_COLOR);
+        Pawn white = new Pawn(Pawn.WHITE_COLOR, Pawn.WHITE_REPRESENTATION);
         board.add(white);
         assertEquals(1, board.size());
         assertEquals(white, board.findPawn(0));
 
-        Pawn black = new Pawn(Pawn.BLACK_COLOR);
+        Pawn black = new Pawn(Pawn.BLACK_COLOR, Pawn.BLACK_REPRESENTATION);
         board.add(black);
         assertEquals(2, board.size());
         assertEquals(black, board.findPawn(1));
