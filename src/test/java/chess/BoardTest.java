@@ -23,4 +23,13 @@ public class BoardTest {
         assertEquals(2, board.size());
         assertEquals(black, board.findPawn(1));
     }
+
+    @Test
+    @DisplayName("검은색 폰 8개와 흰색 폰 8개가 생성된다.")
+    public void initialize() {
+        Board board = new Board();
+        board.initialize();
+        assertEquals("pppppppp", board.getWhitePawnResult());
+        assertEquals("PPPPPPPP", board.getBlackPawnResult());
+    }
 }
