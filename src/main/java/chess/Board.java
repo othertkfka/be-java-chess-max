@@ -9,7 +9,6 @@ public class Board {
     private ArrayList<Pawn> blackPawnList = new ArrayList<>();
     private ArrayList<Pawn> whitePawnList = new ArrayList<>();
 
-
     public void initialize() {
         for(int i=0; i<8; i++) {
             blackPawnList.add(new Pawn(Pawn.BLACK_COLOR, Pawn.BLACK_REPRESENTATION));
@@ -35,6 +34,19 @@ public class Board {
 
     public String getBlackPawnResult() {
         return getPawnListString(blackPawnList);
+    }
+
+    public String print() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("........\n");
+        sb.append(getBlackPawnResult() + "\n");
+        sb.append("........\n");
+        sb.append("........\n");
+        sb.append("........\n");
+        sb.append("........\n");
+        sb.append(getWhitePawnResult() + "\n");
+        sb.append("........\n");
+        return sb.toString();
     }
 
     private String getPawnListString(ArrayList<Pawn> pawnList) {
