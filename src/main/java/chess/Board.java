@@ -39,12 +39,12 @@ public class Board {
     public String print() {
         StringBuilder sb = new StringBuilder();
         sb.append("........\n");
-        sb.append(getBlackPawnResult() + "\n");
+        sb.append(getBlackPawnResult()).append("\n");
         sb.append("........\n");
         sb.append("........\n");
         sb.append("........\n");
         sb.append("........\n");
-        sb.append(getWhitePawnResult() + "\n");
+        sb.append(getWhitePawnResult()).append("\n");
         sb.append("........\n");
         return sb.toString();
     }
