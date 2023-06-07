@@ -13,7 +13,7 @@ public class ChessGame {
             if(command.equals("start")) {
                 Board board = new Board();
                 board.initialize();
-                System.out.println(board.print());
+                System.out.println(board.showBoard());
             } else if(command.equals("end")) {
                 System.out.println("게임을 종료합니다.");
                 break;
