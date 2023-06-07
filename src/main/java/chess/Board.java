@@ -4,6 +4,7 @@ import pieces.Piece;
 
 import java.util.ArrayList;
 
+import static pieces.Piece.Color;
 import static utils.StringUtils.appendNewLine;
 
 public class Board {
@@ -13,17 +14,17 @@ public class Board {
     private ArrayList<Piece> whitePawnList = new ArrayList<>();
 
     public void initialize() {
-        blackFirstList = createFirstList(Piece.BLACK_COLOR);
-        whiteFirstList = createFirstList(Piece.WHITE_COLOR);
+        blackFirstList = createFirstList(Color.BLACK);
+        whiteFirstList = createFirstList(Color.WHITE);
         for(int i=0; i<8; i++) {
             blackPawnList.add(Piece.createBlackPawn());
             whitePawnList.add(Piece.createWhitePawn());
         }
     }
 
-    private ArrayList<Piece> createFirstList(String color) {
+    private ArrayList<Piece> createFirstList(Color color) {
         ArrayList<Piece> list = new ArrayList<>();
-        if(color.equals("black")) {
+        if(color.equals(Color.BLACK)) {
             list.add(Piece.createBlackRook());
             list.add(Piece.createBlackKnight());
             list.add(Piece.createBlackBishop());

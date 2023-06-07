@@ -65,6 +65,10 @@ public class Piece {
         return color;
     }
 
+    public Type getType() {
+        return type;
+    }
+
     public char getRepresentation() {
         if(color.equals(Color.BLACK)) {
             return type.getBlackRepresentation();
