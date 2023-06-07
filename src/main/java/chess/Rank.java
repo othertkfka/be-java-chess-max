@@ -63,6 +63,16 @@ public class Rank {
         return pieceCount;
     }
 
+    public int getPieceCount(Color color, Type type) {
+        int pieceCount = 0;
+        for(Piece piece : rank) {
+            if(piece.getColor() == color && piece.getType() == type) {
+                pieceCount += 1;
+            }
+        }
+        return pieceCount;
+    }
+
     public String getRankString() {
         StringBuilder sb = new StringBuilder();
         for(Piece piece : rank) {

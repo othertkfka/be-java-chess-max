@@ -5,6 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static pieces.Piece.Color;
+import static pieces.Piece.Type;
 import static utils.StringUtils.appendNewLine;
 
 public class BoardTest {
@@ -36,5 +38,19 @@ public class BoardTest {
         board.initialize();
 
         System.out.println(board.showBoard());
+    }
+
+    @Test
+    @DisplayName("특정 색깔과 종류 기물의 개수를 반환한다.")
+    public void pieceCount() {
+        board.initialize();
+
+        assertThat(board.pieceCount(Color.BLACK, Type.PAWN)).isEqualTo(8);
+        assertThat(board.pieceCount(Color.BLACK, Type.BISHOP)).isEqualTo(2);
+        assertThat(board.pieceCount(Color.BLACK, Type.QUEEN)).isEqualTo(1);
+
+        assertThat(board.pieceCount(Color.WHITE, Type.PAWN)).isEqualTo(8);
+        assertThat(board.pieceCount(Color.WHITE, Type.ROOK)).isEqualTo(2);
+        assertThat(board.pieceCount(Color.WHITE, Type.KING)).isEqualTo(1);
     }
 }
