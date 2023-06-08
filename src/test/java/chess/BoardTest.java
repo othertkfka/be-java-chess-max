@@ -3,6 +3,7 @@ package chess;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import pieces.Piece;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static pieces.Piece.Color;
@@ -52,5 +53,26 @@ public class BoardTest {
         assertThat(board.pieceCount(Color.WHITE, Type.PAWN)).isEqualTo(8);
         assertThat(board.pieceCount(Color.WHITE, Type.ROOK)).isEqualTo(2);
         assertThat(board.pieceCount(Color.WHITE, Type.KING)).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("입력한 위치에 해당하는 기물을 반환한다.")
+    public void findPiece() throws Exception {
+        //given
+        board.initialize();
+        //when
+        Piece a8 = board.findPiece("a8");
+        Piece c7 = board.findPiece("c7");
+        Piece a1 = board.findPiece("a1");
+        Piece d2 = board.findPiece("d2");
+        //then
+        assertThat(a8.getType()).isEqualTo(Type.ROOK);
+        assertThat(a8.getColor()).isEqualTo(Color.BLACK);
+        assertThat(c7.getType()).isEqualTo(Type.PAWN);
+        assertThat(c7.getColor()).isEqualTo(Color.BLACK);
+        assertThat(a1.getType()).isEqualTo(Type.ROOK);
+        assertThat(a1.getColor()).isEqualTo(Color.WHITE);
+        assertThat(d2.getType()).isEqualTo(Type.PAWN);
+        assertThat(d2.getColor()).isEqualTo(Color.WHITE);
     }
 }

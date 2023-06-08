@@ -59,6 +59,10 @@ public class Rank {
         return rank;
     }
 
+    public Piece getPiece(int index) {
+        return rank.get(index);
+    }
+
     public void addPiece(Piece piece) {
         rank.add(piece);
     }
