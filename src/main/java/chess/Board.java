@@ -53,15 +53,11 @@ public class Board {
         return sb.toString();
     }
 
-    public Piece findPiece(String position) {
-        int x = position.charAt(0) - 'a';
-        int y = Character.getNumericValue(position.charAt(1)) - 1;
-        return board.get(y).getPiece(x);
+    public Piece findPiece(Position position) {
+        return board.get(position.getYPos()).getPiece(position.getXPos());
     }
 
-    public void move(String position, Piece piece) {
-        int x = position.charAt(0) - 'a';
-        int y = Character.getNumericValue(position.charAt(1)) - 1;
-        board.get(y).addPiece(x, piece);
+    public void move(Position position, Piece piece) {
+        board.get(position.getYPos()).addPiece(position.getXPos(), piece);
     }
 }

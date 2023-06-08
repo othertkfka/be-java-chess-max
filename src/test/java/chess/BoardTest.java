@@ -61,10 +61,10 @@ public class BoardTest {
         //given
         board.initialize();
         //when
-        Piece a8 = board.findPiece("a8");
-        Piece c7 = board.findPiece("c7");
-        Piece a1 = board.findPiece("a1");
-        Piece d2 = board.findPiece("d2");
+        Piece a8 = board.findPiece(new Position("a8"));
+        Piece c7 = board.findPiece(new Position("c7"));
+        Piece a1 = board.findPiece(new Position("a1"));
+        Piece d2 = board.findPiece(new Position("d2"));
         //then
         isEqualPiece(a8, Piece.createBlackRook());
         isEqualPiece(c7, Piece.createBlackPawn());
@@ -78,7 +78,7 @@ public class BoardTest {
         //given
         board.initializeEmpty();
 
-        String position = "b5";
+        Position position = new Position("b5");
         Piece piece = Piece.createBlackRook();
 
         //when
