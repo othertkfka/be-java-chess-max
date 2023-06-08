@@ -85,7 +85,7 @@ public class Rank {
     public int getPieceCount(Color color, Type type) {
         int pieceCount = 0;
         for(Piece piece : rank) {
-            if(piece.getColor() == color && piece.getType() == type) {
+            if(piece.isSameColor(color) && piece.isSameType(type)) {
                 pieceCount += 1;
             }
         }
@@ -103,7 +103,7 @@ public class Rank {
     public List<Piece> findPiecesByColor(Color color) {
         List<Piece> pieces = new ArrayList<>();
         for(Piece piece : rank) {
-            if(piece.getColor() == color) {
+            if(piece.isSameColor(color)) {
                 pieces.add(piece);
             }
         }

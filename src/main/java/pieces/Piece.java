@@ -77,6 +77,14 @@ public class Piece {
         return type;
     }
 
+    public boolean isSameType(Type type) {
+        return this.type.equals(type);
+    }
+
+    public double getPoint() {
+        return type.getDefaultPoint();
+    }
+
     public char getRepresentation() {
         if(color.equals(Color.BLACK)) {
             return type.getBlackRepresentation();
@@ -90,6 +98,10 @@ public class Piece {
 
     public boolean isWhite() {
         return color.equals(Color.WHITE);
+    }
+
+    public boolean isSameColor(Color color) {
+        return this.color.equals(color);
     }
 
     public enum Color {
