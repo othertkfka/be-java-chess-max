@@ -67,10 +67,10 @@ public class BoardTest {
         Piece a1 = board.findPiece(new Position("a1"));
         Piece d2 = board.findPiece(new Position("d2"));
         //then
-        isEqualPiece(a8, Piece.createBlackRook());
-        isEqualPiece(c7, Piece.createBlackPawn());
-        isEqualPiece(a1, Piece.createWhiteRook());
-        isEqualPiece(d2, Piece.createWhitePawn());
+        isEqualPiece(a8, Piece.createBlackRook(new Position("a8")));
+        isEqualPiece(c7, Piece.createBlackPawn(new Position("c7")));
+        isEqualPiece(a1, Piece.createWhiteRook(new Position("a1")));
+        isEqualPiece(d2, Piece.createWhitePawn(new Position("d2")));
     }
 
     @Test
@@ -80,7 +80,7 @@ public class BoardTest {
         board.initializeEmpty();
 
         Position position = new Position("b5");
-        Piece piece = Piece.createBlackRook();
+        Piece piece = Piece.createBlackRook(position);
 
         //when
         board.move(position, piece);
@@ -101,16 +101,16 @@ public class BoardTest {
         //given
         board.initializeEmpty();
         //when
-        addPiece("b6", Piece.createBlackPawn());
-        addPiece("e6", Piece.createBlackQueen());
-        addPiece("b8", Piece.createBlackKing());
-        addPiece("c8", Piece.createBlackRook());
+        addPiece("b6", Piece.createBlackPawn(new Position("b6")));
+        addPiece("e6", Piece.createBlackQueen(new Position("e6")));
+        addPiece("b8", Piece.createBlackKing(new Position("b8")));
+        addPiece("c8", Piece.createBlackRook(new Position("c8")));
 
-        addPiece("f3", Piece.createWhitePawn());
-        addPiece("f2", Piece.createWhitePawn());
-        addPiece("g2", Piece.createWhitePawn());
-        addPiece("e1", Piece.createWhiteRook());
-        addPiece("f1", Piece.createWhiteKing());
+        addPiece("f3", Piece.createWhitePawn(new Position("f3")));
+        addPiece("f2", Piece.createWhitePawn(new Position("f2")));
+        addPiece("g2", Piece.createWhitePawn(new Position("g2")));
+        addPiece("e1", Piece.createWhiteRook(new Position("e1")));
+        addPiece("f1", Piece.createWhiteKing(new Position("f1")));
 
         //then
         Assertions.assertEquals(15.0, board.calculatePoint(Color.BLACK), 0.01);
@@ -119,7 +119,7 @@ public class BoardTest {
         System.out.println(board.showBoard());
     }
 
-    private void addPiece(String position ,Piece piece) {
+    private void addPiece(String position, Piece piece) {
         board.move(new Position(position), piece);
     }
 }

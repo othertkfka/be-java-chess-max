@@ -16,46 +16,48 @@ public class Rank {
 
     public static Rank createFirstRank(Color color) {
         Rank rank = new Rank();
-        if(color.equals(Color.BLACK)) {
-            rank.addPiece(Piece.createBlackRook());
-            rank.addPiece(Piece.createBlackKnight());
-            rank.addPiece(Piece.createBlackBishop());
-            rank.addPiece(Piece.createBlackQueen());
-            rank.addPiece(Piece.createBlackKing());
-            rank.addPiece(Piece.createBlackBishop());
-            rank.addPiece(Piece.createBlackKnight());
-            rank.addPiece(Piece.createBlackRook());
+        if (color.equals(Color.BLACK)) {
+            int yPos = 7;
+            rank.addPiece(Piece.createBlackRook(new Position(0, yPos)));
+            rank.addPiece(Piece.createBlackKnight(new Position(1, yPos)));
+            rank.addPiece(Piece.createBlackBishop(new Position(2, yPos)));
+            rank.addPiece(Piece.createBlackQueen(new Position(3, yPos)));
+            rank.addPiece(Piece.createBlackKing(new Position(4, yPos)));
+            rank.addPiece(Piece.createBlackBishop(new Position(5, yPos)));
+            rank.addPiece(Piece.createBlackKnight(new Position(6, yPos)));
+            rank.addPiece(Piece.createBlackRook(new Position(7, yPos)));
         } else {
-            rank.addPiece(Piece.createWhiteRook());
-            rank.addPiece(Piece.createWhiteKnight());
-            rank.addPiece(Piece.createWhiteBishop());
-            rank.addPiece(Piece.createWhiteQueen());
-            rank.addPiece(Piece.createWhiteKing());
-            rank.addPiece(Piece.createWhiteBishop());
-            rank.addPiece(Piece.createWhiteKnight());
-            rank.addPiece(Piece.createWhiteRook());
+            int yPos = 0;
+            rank.addPiece(Piece.createWhiteRook(new Position(0, yPos)));
+            rank.addPiece(Piece.createWhiteKnight(new Position(1, yPos)));
+            rank.addPiece(Piece.createWhiteBishop(new Position(2, yPos)));
+            rank.addPiece(Piece.createWhiteQueen(new Position(3, yPos)));
+            rank.addPiece(Piece.createWhiteKing(new Position(4, yPos)));
+            rank.addPiece(Piece.createWhiteBishop(new Position(5, yPos)));
+            rank.addPiece(Piece.createWhiteKnight(new Position(6, yPos)));
+            rank.addPiece(Piece.createWhiteRook(new Position(7, yPos)));
         }
         return rank;
     }
 
     public static Rank createPawnRank(Color color) {
         Rank rank = new Rank();
-        if(color.equals(Color.BLACK)) {
-            for(int i=0; i<8; i++) {
-                rank.addPiece(Piece.createBlackPawn());
+        if (color.equals(Color.BLACK)) {
+            for (int i = 0; i < 8; i++) {
+                rank.addPiece(Piece.createBlackPawn(new Position(i, 6)));
             }
         } else {
-            for(int i=0; i<8; i++) {
-                rank.addPiece(Piece.createWhitePawn());
+            for (int i = 0; i < 8; i++) {
+                rank.addPiece(Piece.createWhitePawn(new Position(i, 1)));
             }
         }
         return rank;
     }
 
-    public static Rank createBlankRank() {
+    public static Rank createBlankRank(int index) {
         Rank rank = new Rank();
-        for(int i=0; i<8; i++) {
-            rank.addPiece(Piece.createBlank());
+        for (int i = 0; i < 8; i++) {
+            rank.addPiece(Piece.createBlank(new Position(i, index)));
         }
         return rank;
     }
@@ -74,8 +76,8 @@ public class Rank {
 
     public int getPieceCount() {
         int pieceCount = 0;
-        for(Piece piece : rank) {
-            if(piece.getType() != Type.NO_PIECE) {
+        for (Piece piece : rank) {
+            if (piece.getType() != Type.NO_PIECE) {
                 pieceCount += 1;
             }
         }
@@ -84,8 +86,8 @@ public class Rank {
 
     public int getPieceCount(Color color, Type type) {
         int pieceCount = 0;
-        for(Piece piece : rank) {
-            if(piece.matchColor(color) && piece.matchType(type)) {
+        for (Piece piece : rank) {
+            if (piece.matchColor(color) && piece.matchType(type)) {
                 pieceCount += 1;
             }
         }
@@ -94,7 +96,7 @@ public class Rank {
 
     public String getRankString() {
         StringBuilder sb = new StringBuilder();
-        for(Piece piece : rank) {
+        for (Piece piece : rank) {
             sb.append(piece.getRepresentation());
         }
         return sb.toString();
@@ -102,8 +104,8 @@ public class Rank {
 
     public List<Piece> findPiecesByColor(Color color) {
         List<Piece> pieces = new ArrayList<>();
-        for(Piece piece : rank) {
-            if(piece.matchColor(color)) {
+        for (Piece piece : rank) {
+            if (piece.matchColor(color)) {
                 pieces.add(piece);
             }
         }

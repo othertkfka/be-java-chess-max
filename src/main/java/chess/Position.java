@@ -10,6 +10,11 @@ public class Position {
         yPos = Character.getNumericValue(position.charAt(1)) - 1;
     }
 
+    public Position(int xPos, int yPos) {
+        this.xPos = xPos;
+        this.yPos = yPos;
+    }
+
     public int getXPos() {
         return xPos;
     }
