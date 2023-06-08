@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Rank {
     private ArrayList<Piece> rank;
 
-    public Rank() {
+    private Rank() {
         rank = new ArrayList<>();
     }
 
