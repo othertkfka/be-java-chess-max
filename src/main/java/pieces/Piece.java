@@ -77,7 +77,7 @@ public class Piece {
         return type;
     }
 
-    public boolean isSameType(Type type) {
+    public boolean matchType(Type type) {
         return this.type.equals(type);
     }
 
@@ -100,7 +100,7 @@ public class Piece {
         return color.equals(Color.WHITE);
     }
 
-    public boolean isSameColor(Color color) {
+    public boolean matchColor(Color color) {
         return this.color.equals(color);
     }
 
