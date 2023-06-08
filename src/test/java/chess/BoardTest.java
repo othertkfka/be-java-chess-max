@@ -75,4 +75,27 @@ public class BoardTest {
         assertThat(d2.getType()).isEqualTo(Type.PAWN);
         assertThat(d2.getColor()).isEqualTo(Color.WHITE);
     }
+
+    @Test
+    @DisplayName("입력한 위치에 기물을 추가한다.")
+    public void move() throws Exception {
+        //given
+        board.initializeEmpty();
+
+        String position = "b5";
+        Piece piece = Piece.createBlackRook();
+
+        //when
+        board.move(position, piece);
+
+        //then
+        isEqualPiece(piece, board.findPiece(position));
+        System.out.println(board.showBoard());
+
+    }
+
+    private void isEqualPiece(Piece target, Piece other) {
+        assertThat(target.getType()).isEqualTo(other.getType());
+        assertThat(target.getColor()).isEqualTo(other.getColor());
+    }
 }

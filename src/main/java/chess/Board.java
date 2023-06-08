@@ -11,7 +11,7 @@ import static utils.StringUtils.appendNewLine;
 public class Board {
     private static final int MAX_LENGTH = 8;
 
-    private ArrayList<Rank> board = new ArrayList<>(MAX_LENGTH);
+    private final ArrayList<Rank> board = new ArrayList<>(MAX_LENGTH);
 
     public void initialize() {
         board.add(Rank.createFirstRank(Color.WHITE));
@@ -21,6 +21,12 @@ public class Board {
         }
         board.add(Rank.createPawnRank(Color.BLACK));
         board.add(Rank.createFirstRank(Color.BLACK));
+    }
+
+    public void initializeEmpty() {
+        for(int i=0; i<MAX_LENGTH; i++) {
+            board.add(Rank.createBlankRank());
+        }
     }
 
     public int pieceCount() {
@@ -49,7 +55,13 @@ public class Board {
 
     public Piece findPiece(String position) {
         int x = position.charAt(0) - 'a';
-        int y = Character.getNumericValue(position.charAt(1));
-        return board.get(y-1).getPiece(x);
+        int y = Character.getNumericValue(position.charAt(1)) - 1;
+        return board.get(y).getPiece(x);
+    }
+
+    public void move(String position, Piece piece) {
+        int x = position.charAt(0) - 'a';
+        int y = Character.getNumericValue(position.charAt(1)) - 1;
+        board.get(y).addPiece(x, piece);
     }
 }

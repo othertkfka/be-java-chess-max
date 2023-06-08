@@ -67,6 +67,10 @@ public class Rank {
         rank.add(piece);
     }
 
+    public void addPiece(int index, Piece piece) {
+        rank.set(index, piece);
+    }
+
     public int getPieceCount() {
         int pieceCount = 0;
         for(Piece piece : rank) {
