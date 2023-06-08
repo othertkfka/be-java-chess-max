@@ -1,5 +1,6 @@
 package chess;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -92,5 +93,33 @@ public class BoardTest {
     private void isEqualPiece(Piece target, Piece other) {
         assertThat(target.getType()).isEqualTo(other.getType());
         assertThat(target.getColor()).isEqualTo(other.getColor());
+    }
+
+    @Test
+    @DisplayName("같은 색깔의 남아있는 기물들 점수의 합을 계산한다.")
+    public void caculatePoint() throws Exception {
+        //given
+        board.initializeEmpty();
+        //when
+        addPiece("b6", Piece.createBlackPawn());
+        addPiece("e6", Piece.createBlackQueen());
+        addPiece("b8", Piece.createBlackKing());
+        addPiece("c8", Piece.createBlackRook());
+
+        addPiece("f3", Piece.createWhitePawn());
+        addPiece("f2", Piece.createWhitePawn());
+        addPiece("g2", Piece.createWhitePawn());
+        addPiece("e1", Piece.createWhiteRook());
+        addPiece("f1", Piece.createWhiteKing());
+
+        //then
+        Assertions.assertEquals(15.0, board.calculatePoint(Color.BLACK), 0.01);
+        Assertions.assertEquals(8.0, board.calculatePoint(Color.WHITE), 0.01);
+
+        System.out.println(board.showBoard());
+    }
+
+    private void addPiece(String position ,Piece piece) {
+        board.move(new Position(position), piece);
     }
 }

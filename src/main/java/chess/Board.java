@@ -3,6 +3,7 @@ package chess;
 import pieces.Piece;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static pieces.Piece.Color;
 import static pieces.Piece.Type;
@@ -11,7 +12,7 @@ import static utils.StringUtils.appendNewLine;
 public class Board {
     private static final int MAX_LENGTH = 8;
 
-    private final ArrayList<Rank> board = new ArrayList<>(MAX_LENGTH);
+    private final List<Rank> board = new ArrayList<>(MAX_LENGTH);
 
     public void initialize() {
         board.add(Rank.createFirstRank(Color.WHITE));
@@ -59,5 +60,22 @@ public class Board {
 
     public void move(Position position, Piece piece) {
         board.get(position.getYPos()).addPiece(position.getXPos(), piece);
+    }
+
+    public double calculatePoint(Color color) {
+        List<Piece> pieces = findPiecesByColor(color);
+        double point = 0.0;
+        for(Piece piece : pieces) {
+            point += piece.getType().getDefaultPoint();
+        }
+        return point;
+    }
+
+    private List<Piece> findPiecesByColor(Color color) {
+        List<Piece> pieces = new ArrayList<>();
+        for(Rank rank : board) {
+            pieces.addAll(rank.findPiecesByColor(color));
+        }
+        return pieces;
     }
 }

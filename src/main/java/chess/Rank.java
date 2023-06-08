@@ -5,6 +5,7 @@ import pieces.Piece.Color;
 import pieces.Piece.Type;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Rank {
     private ArrayList<Piece> rank;
@@ -97,5 +98,15 @@ public class Rank {
             sb.append(piece.getRepresentation());
         }
         return sb.toString();
+    }
+
+    public List<Piece> findPiecesByColor(Color color) {
+        List<Piece> pieces = new ArrayList<>();
+        for(Piece piece : rank) {
+            if(piece.getColor() == color) {
+                pieces.add(piece);
+            }
+        }
+        return pieces;
     }
 }
