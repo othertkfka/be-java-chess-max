@@ -13,44 +13,54 @@ public class Rank {
         rank = new ArrayList<>();
     }
 
-    public void createFirstRank(Color color) {
+    public static Rank createFirstRank(Color color) {
+        Rank rank = new Rank();
         if(color.equals(Color.BLACK)) {
-            rank.add(Piece.createBlackRook());
-            rank.add(Piece.createBlackKnight());
-            rank.add(Piece.createBlackBishop());
-            rank.add(Piece.createBlackQueen());
-            rank.add(Piece.createBlackKing());
-            rank.add(Piece.createBlackBishop());
-            rank.add(Piece.createBlackKnight());
-            rank.add(Piece.createBlackRook());
+            rank.addPiece(Piece.createBlackRook());
+            rank.addPiece(Piece.createBlackKnight());
+            rank.addPiece(Piece.createBlackBishop());
+            rank.addPiece(Piece.createBlackQueen());
+            rank.addPiece(Piece.createBlackKing());
+            rank.addPiece(Piece.createBlackBishop());
+            rank.addPiece(Piece.createBlackKnight());
+            rank.addPiece(Piece.createBlackRook());
         } else {
-            rank.add(Piece.createWhiteRook());
-            rank.add(Piece.createWhiteKnight());
-            rank.add(Piece.createWhiteBishop());
-            rank.add(Piece.createWhiteQueen());
-            rank.add(Piece.createWhiteKing());
-            rank.add(Piece.createWhiteBishop());
-            rank.add(Piece.createWhiteKnight());
-            rank.add(Piece.createWhiteRook());
+            rank.addPiece(Piece.createWhiteRook());
+            rank.addPiece(Piece.createWhiteKnight());
+            rank.addPiece(Piece.createWhiteBishop());
+            rank.addPiece(Piece.createWhiteQueen());
+            rank.addPiece(Piece.createWhiteKing());
+            rank.addPiece(Piece.createWhiteBishop());
+            rank.addPiece(Piece.createWhiteKnight());
+            rank.addPiece(Piece.createWhiteRook());
         }
+        return rank;
     }
 
-    public void createPawnRank(Color color) {
+    public static Rank createPawnRank(Color color) {
+        Rank rank = new Rank();
         if(color.equals(Color.BLACK)) {
             for(int i=0; i<8; i++) {
-                rank.add(Piece.createBlackPawn());
+                rank.addPiece(Piece.createBlackPawn());
             }
         } else {
             for(int i=0; i<8; i++) {
-                rank.add(Piece.createWhitePawn());
+                rank.addPiece(Piece.createWhitePawn());
             }
         }
+        return rank;
     }
 
-    public void createBlankRank() {
+    public static Rank createBlankRank() {
+        Rank rank = new Rank();
         for(int i=0; i<8; i++) {
-            rank.add(Piece.createBlank());
+            rank.addPiece(Piece.createBlank());
         }
+        return rank;
+    }
+
+    public void addPiece(Piece piece) {
+        rank.add(piece);
     }
 
     public int getPieceCount() {

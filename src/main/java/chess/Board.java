@@ -10,25 +10,13 @@ public class Board {
     private ArrayList<Rank> board = new ArrayList<>(8);
 
     public void initialize() {
-        Rank blackFirstRank = new Rank();
-        Rank whiteFirstRank = new Rank();
-        blackFirstRank.createFirstRank(Color.BLACK);
-        whiteFirstRank.createFirstRank(Color.WHITE);
-
-        Rank blackPawnRank = new Rank();
-        Rank whitePawnRank = new Rank();
-        blackPawnRank.createPawnRank(Color.BLACK);
-        whitePawnRank.createPawnRank(Color.WHITE);
-
-        board.add(blackFirstRank);
-        board.add(blackPawnRank);
+        board.add(Rank.createFirstRank(Color.BLACK));
+        board.add(Rank.createPawnRank(Color.BLACK));
         for(int i=0; i<4; i++) {
-            Rank blankRank = new Rank();
-            blankRank.createBlankRank();
-            board.add(blankRank);
+            board.add(Rank.createBlankRank());
         }
-        board.add(whitePawnRank);
-        board.add(whiteFirstRank);
+        board.add(Rank.createPawnRank(Color.WHITE));
+        board.add(Rank.createFirstRank(Color.WHITE));
     }
 
     public int pieceCount() {
