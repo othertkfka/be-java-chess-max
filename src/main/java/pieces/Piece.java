@@ -3,6 +3,7 @@ package pieces;
 import chess.Position;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Piece {
     private final Color color;
@@ -125,6 +126,26 @@ public class Piece {
 
     public boolean matchColor(Color color) {
         return this.color.equals(color);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        
+        Piece piece = (Piece) o;
+
+        if (color != piece.color) return false;
+        if (type != piece.type) return false;
+        return Objects.equals(position, piece.position);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = color != null ? color.hashCode() : 0;
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (position != null ? position.hashCode() : 0);
+        return result;
     }
 
     public enum Color {

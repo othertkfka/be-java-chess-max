@@ -67,10 +67,10 @@ public class BoardTest {
         Piece a1 = board.findPiece(new Position("a1"));
         Piece d2 = board.findPiece(new Position("d2"));
         //then
-        isEqualPiece(a8, Piece.createBlackRook(new Position("a8")));
-        isEqualPiece(c7, Piece.createBlackPawn(new Position("c7")));
-        isEqualPiece(a1, Piece.createWhiteRook(new Position("a1")));
-        isEqualPiece(d2, Piece.createWhitePawn(new Position("d2")));
+        Assertions.assertEquals(a8, Piece.createBlackRook(new Position("a8")));
+        Assertions.assertEquals(c7, Piece.createBlackPawn(new Position("c7")));
+        Assertions.assertEquals(a1, Piece.createWhiteRook(new Position("a1")));
+        Assertions.assertEquals(d2, Piece.createWhitePawn(new Position("d2")));
     }
 
     @Test
@@ -79,20 +79,15 @@ public class BoardTest {
         //given
         board.initializeEmpty();
 
+        Piece piece = Piece.createBlackRook(new Position("b8"));
         Position position = new Position("b5");
-        Piece piece = Piece.createBlackRook(position);
 
         //when
         board.move(position, piece);
 
         //then
-        isEqualPiece(piece, board.findPiece(position));
+        assertThat(board.findPiece(position)).isEqualTo(piece);
         System.out.println(board.showBoard());
-    }
-
-    private void isEqualPiece(Piece target, Piece other) {
-        assertThat(target.getType()).isEqualTo(other.getType());
-        assertThat(target.getColor()).isEqualTo(other.getColor());
     }
 
     @Test
