@@ -1,7 +1,5 @@
 package pieces;
 
-import chess.Position;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -132,7 +130,7 @@ public class Piece {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        
+
         Piece piece = (Piece) o;
 
         if (color != piece.color) return false;

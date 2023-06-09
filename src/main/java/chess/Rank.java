@@ -3,6 +3,7 @@ package chess;
 import pieces.Piece;
 import pieces.Piece.Color;
 import pieces.Piece.Type;
+import pieces.Position;
 
 import java.util.ArrayList;
 import java.util.List;
