@@ -1,9 +1,8 @@
 package chess;
 
-import pieces.Piece;
+import pieces.*;
 import pieces.Piece.Color;
 import pieces.Piece.Type;
-import pieces.Position;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,24 +18,24 @@ public class Rank {
         Rank rank = new Rank();
         if (color.equals(Color.BLACK)) {
             int yPos = 7;
-            rank.addPiece(Piece.createBlackRook(new Position(0, yPos)));
-            rank.addPiece(Piece.createBlackKnight(new Position(1, yPos)));
-            rank.addPiece(Piece.createBlackBishop(new Position(2, yPos)));
-            rank.addPiece(Piece.createBlackQueen(new Position(3, yPos)));
-            rank.addPiece(Piece.createBlackKing(new Position(4, yPos)));
-            rank.addPiece(Piece.createBlackBishop(new Position(5, yPos)));
-            rank.addPiece(Piece.createBlackKnight(new Position(6, yPos)));
-            rank.addPiece(Piece.createBlackRook(new Position(7, yPos)));
+            rank.addPiece(Rook.createBlack(new Position(0, yPos)));
+            rank.addPiece(Knight.createBlack(new Position(1, yPos)));
+            rank.addPiece(Bishop.createBlack(new Position(2, yPos)));
+            rank.addPiece(Queen.createBlack(new Position(3, yPos)));
+            rank.addPiece(King.createBlack(new Position(4, yPos)));
+            rank.addPiece(Bishop.createBlack(new Position(5, yPos)));
+            rank.addPiece(Knight.createBlack(new Position(6, yPos)));
+            rank.addPiece(Rook.createBlack(new Position(7, yPos)));
         } else {
             int yPos = 0;
-            rank.addPiece(Piece.createWhiteRook(new Position(0, yPos)));
-            rank.addPiece(Piece.createWhiteKnight(new Position(1, yPos)));
-            rank.addPiece(Piece.createWhiteBishop(new Position(2, yPos)));
-            rank.addPiece(Piece.createWhiteQueen(new Position(3, yPos)));
-            rank.addPiece(Piece.createWhiteKing(new Position(4, yPos)));
-            rank.addPiece(Piece.createWhiteBishop(new Position(5, yPos)));
-            rank.addPiece(Piece.createWhiteKnight(new Position(6, yPos)));
-            rank.addPiece(Piece.createWhiteRook(new Position(7, yPos)));
+            rank.addPiece(Rook.createWhite(new Position(0, yPos)));
+            rank.addPiece(Knight.createWhite(new Position(1, yPos)));
+            rank.addPiece(Bishop.createWhite(new Position(2, yPos)));
+            rank.addPiece(Queen.createWhite(new Position(3, yPos)));
+            rank.addPiece(King.createWhite(new Position(4, yPos)));
+            rank.addPiece(Bishop.createWhite(new Position(5, yPos)));
+            rank.addPiece(Knight.createWhite(new Position(6, yPos)));
+            rank.addPiece(Rook.createWhite(new Position(7, yPos)));
         }
         return rank;
     }
@@ -45,11 +44,11 @@ public class Rank {
         Rank rank = new Rank();
         if (color.equals(Color.BLACK)) {
             for (int i = 0; i < 8; i++) {
-                rank.addPiece(Piece.createBlackPawn(new Position(i, 6)));
+                rank.addPiece(Pawn.createBlack(new Position(i, 6)));
             }
         } else {
             for (int i = 0; i < 8; i++) {
-                rank.addPiece(Piece.createWhitePawn(new Position(i, 1)));
+                rank.addPiece(Pawn.createWhite(new Position(i, 1)));
             }
         }
         return rank;
@@ -58,7 +57,7 @@ public class Rank {
     public static Rank createBlankRank(int index) {
         Rank rank = new Rank();
         for (int i = 0; i < 8; i++) {
-            rank.addPiece(Piece.createBlank(new Position(i, index)));
+            rank.addPiece(Blank.createBlank(new Position(i, index)));
         }
         return rank;
     }

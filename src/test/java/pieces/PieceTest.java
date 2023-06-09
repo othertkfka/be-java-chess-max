@@ -12,14 +12,14 @@ public class PieceTest {
     @Test
     @DisplayName("흰색 또는 검은색으로 기물이 생성된다.")
     public void create() {
-        verifyPiece(Piece.createWhitePawn(new Position("a1")), Piece.createBlackPawn(new Position("a8")), Type.PAWN);
-        verifyPiece(Piece.createWhiteKnight(new Position("a1")), Piece.createBlackKnight(new Position("a8")), Type.KNIGHT);
-        verifyPiece(Piece.createWhiteRook(new Position("a1")), Piece.createBlackRook(new Position("a8")), Type.ROOK);
-        verifyPiece(Piece.createWhiteBishop(new Position("a1")), Piece.createBlackBishop(new Position("a8")), Type.BISHOP);
-        verifyPiece(Piece.createWhiteQueen(new Position("a1")), Piece.createBlackQueen(new Position("a8")), Type.QUEEN);
-        verifyPiece(Piece.createWhiteKing(new Position("a1")), Piece.createBlackKing(new Position("a8")), Type.KING);
+        verifyPiece(Pawn.createWhite(new Position("a1")), Pawn.createBlack(new Position("a8")), Type.PAWN);
+        verifyPiece(Knight.createWhite(new Position("a1")), Knight.createBlack(new Position("a8")), Type.KNIGHT);
+        verifyPiece(Rook.createWhite(new Position("a1")), Rook.createBlack(new Position("a8")), Type.ROOK);
+        verifyPiece(Bishop.createWhite(new Position("a1")), Bishop.createBlack(new Position("a8")), Type.BISHOP);
+        verifyPiece(Queen.createWhite(new Position("a1")), Queen.createBlack(new Position("a8")), Type.QUEEN);
+        verifyPiece(King.createWhite(new Position("a1")), King.createBlack(new Position("a8")), Type.KING);
 
-        Piece blank = Piece.createBlank(new Position("a1"));
+        Piece blank = Blank.createBlank(new Position("a1"));
         assertThat(blank.getColor()).isEqualTo(Color.NOCOLOR);
         assertThat(blank.getType()).isEqualTo(Type.NO_PIECE);
     }
@@ -35,10 +35,10 @@ public class PieceTest {
     @Test
     @DisplayName("생성한 기물이 흰색인지 검은색인지 확인한다.")
     public void isBlackOrWhite() {
-        Piece whitePawn = Piece.createWhitePawn(new Position("a1"));
-        Piece blackPawn = Piece.createBlackPawn(new Position("a8"));
-        Piece whiteKnight = Piece.createWhiteKnight(new Position("a1"));
-        Piece blackKnight = Piece.createBlackKnight(new Position("a8"));
+        Piece whitePawn = Pawn.createWhite(new Position("a1"));
+        Piece blackPawn = Pawn.createBlack(new Position("a8"));
+        Piece whiteKnight = Knight.createWhite(new Position("a1"));
+        Piece blackKnight = Knight.createBlack(new Position("a8"));
 
         assertThat(whitePawn.isWhite()).isTrue();
         assertThat(blackPawn.isBlack()).isTrue();
