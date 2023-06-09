@@ -97,7 +97,7 @@ public class BoardTest {
 
     @Test
     @DisplayName("같은 색깔의 남아있는 기물들 점수의 합을 계산한다.")
-    public void caculatePoint() throws Exception {
+    public void calculatePoint() throws Exception {
         //given
         board.initializeEmpty();
         //when
@@ -106,6 +106,7 @@ public class BoardTest {
         addPiece("b8", Piece.createBlackKing(new Position("b8")));
         addPiece("c8", Piece.createBlackRook(new Position("c8")));
 
+        addPiece("f4", Piece.createWhitePawn(new Position("f4")));
         addPiece("f3", Piece.createWhitePawn(new Position("f3")));
         addPiece("f2", Piece.createWhitePawn(new Position("f2")));
         addPiece("g2", Piece.createWhitePawn(new Position("g2")));
@@ -114,7 +115,7 @@ public class BoardTest {
 
         //then
         Assertions.assertEquals(15.0, board.calculatePoint(Color.BLACK), 0.01);
-        Assertions.assertEquals(8.0, board.calculatePoint(Color.WHITE), 0.01);
+        Assertions.assertEquals(7.5, board.calculatePoint(Color.WHITE), 0.01);
 
         System.out.println(board.showBoard());
     }

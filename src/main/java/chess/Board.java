@@ -67,7 +67,7 @@ public class Board {
         List<Piece> pieces = findPiecesByColor(color);
         double point = 0.0;
         for (Piece piece : pieces) {
-            point += piece.getPoint();
+            point += piece.getPoint(pieces);
         }
         return point;
     }

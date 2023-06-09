@@ -2,6 +2,8 @@ package chess;
 
 public class Position {
 
+    public static final int MAX_POS = 7;
+
     private int xPos;
     private int yPos;
 
@@ -21,5 +23,12 @@ public class Position {
 
     public int getYPos() {
         return yPos;
+    }
+
+    /**
+     * other와 x좌표는 같고 y좌표는 다른 Position인 경우
+     */
+    public boolean matchVerticalPosition(Position other) {
+        return yPos != other.yPos && xPos == other.xPos;
     }
 }

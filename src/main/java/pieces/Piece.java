@@ -1,7 +1,8 @@
-
 package pieces;
 
 import chess.Position;
+
+import java.util.List;
 
 public class Piece {
     private final Color color;
@@ -86,12 +87,29 @@ public class Piece {
         return this.type.equals(type);
     }
 
-    public double getPoint() {
-        return type.getDefaultPoint();
+    public boolean isPawn() {
+        return type.equals(Type.PAWN);
+    }
+
+    public double getPoint(List<Piece> remainPieces) {
+        if (!isPawn()) {
+            return type.defaultPoint;
+        }
+        for (Piece piece : remainPieces) {
+            // 세로줄에 Pawn이 있는 경우 0.5점
+            if (matchPawnWithVerticalLine(piece)) {
+                return Type.PAWN_HALF_POINT;
+            }
+        }
+        return type.defaultPoint;
+    }
+
+    private boolean matchPawnWithVerticalLine(Piece piece) {
+        return piece.isPawn() && this.position.matchVerticalPosition(piece.position);
     }
 
     public char getRepresentation() {
-        if(color.equals(Color.BLACK)) {
+        if (color.equals(Color.BLACK)) {
             return type.getBlackRepresentation();
         }
         return type.getWhiteRepresentation();
@@ -122,10 +140,12 @@ public class Piece {
         KING('k', 0.0),
         NO_PIECE('.', 0.0);
 
+        private static final double PAWN_HALF_POINT = 0.5;
+
         private char representation;
         private double defaultPoint;
 
-        Type (char representation, double defaultPoint) {
+        Type(char representation, double defaultPoint) {
             this.representation = representation;
             this.defaultPoint = defaultPoint;
         }
