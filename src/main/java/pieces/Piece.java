@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class Piece {
-    private final Color color;
-    private final Type type;
-    private final Position position;
+    private Color color;
+    private Type type;
+    private Position position;
 
     protected Piece(Color color, Type type, Position position) {
         this.color = color;
@@ -24,6 +24,10 @@ public abstract class Piece {
 
     public boolean matchType(Type type) {
         return this.type.equals(type);
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
     }
 
     public boolean isPawn() {

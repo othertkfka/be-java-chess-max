@@ -1,5 +1,6 @@
 package chess;
 
+import pieces.Blank;
 import pieces.Piece;
 import pieces.Position;
 
@@ -61,7 +62,15 @@ public class Board {
     }
 
     public void move(Position position, Piece piece) {
+        piece.setPosition(position);
         board.get(position.getYPos()).addPiece(position.getXPos(), piece);
+    }
+
+    public void move(String source, String target) {
+        Position sourcePosition = new Position(source);
+        Position targetPosition = new Position(target);
+        move(targetPosition, findPiece(sourcePosition));
+        move(sourcePosition, Blank.createBlank(sourcePosition));
     }
 
     public double calculatePoint(Color color) {

@@ -118,4 +118,21 @@ public class BoardTest {
     private void addPiece(String position, Piece piece) {
         board.move(new Position(position), piece);
     }
+
+    @Test
+    @DisplayName("현재 위치와 다른 위치를 입력받아서 현재 위치의 기물을 다른 위치로 이동한다.")
+    public void movePiece() throws Exception {
+        //given
+        board.initialize();
+
+        //when
+        String sourcePosition = "b2";
+        String targetPosition = "b3";
+        board.move(sourcePosition, targetPosition);
+
+        //then
+        assertThat(board.findPiece(new Position(sourcePosition))).isEqualTo(Blank.createBlank(new Position(sourcePosition)));
+        assertThat(board.findPiece(new Position(targetPosition))).isEqualTo(Pawn.createWhite(new Position(targetPosition)));
+        System.out.println(board.showBoard());
+    }
 }
