@@ -1,3 +1,5 @@
+package exception;
+
 public class InvalidMovePositionException extends RuntimeException {
     public InvalidMovePositionException() {
         super();
