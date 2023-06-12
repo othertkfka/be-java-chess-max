@@ -128,7 +128,7 @@ public class BoardTest {
         //when
         String sourcePosition = "b2";
         String targetPosition = "b3";
-        board.move(sourcePosition, targetPosition);
+        board.move(new Position(sourcePosition), new Position(targetPosition));
 
         //then
         assertThat(board.findPiece(new Position(sourcePosition))).isEqualTo(Blank.createBlank(new Position(sourcePosition)));

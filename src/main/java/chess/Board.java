@@ -66,11 +66,9 @@ public class Board {
         board.get(position.getYPos()).addPiece(position.getXPos(), piece);
     }
 
-    public void move(String source, String target) {
-        Position sourcePosition = new Position(source);
-        Position targetPosition = new Position(target);
-        move(targetPosition, findPiece(sourcePosition));
-        move(sourcePosition, Blank.createBlank(sourcePosition));
+    public void move(Position source, Position target) {
+        move(target, findPiece(source));
+        move(source, Blank.createBlank(source));
     }
 
     public double calculatePoint(Color color) {
